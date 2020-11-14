@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 	map: Map;
 	marker;
 	view: View;
-	vienna: Overlay;
+	duebi: Overlay;
 
 	ngOnInit() {
 		this.layer = new TileLayer({
@@ -30,14 +30,15 @@ export class AppComponent implements OnInit {
 			layers: [this.layer],
 			target: "map",
 			view: new View({
-				center: [0, 0],
-				zoom: 2
+				center: fromLonLat([8.611, 47.391]),
+				zoom: 17
 			})
 		});
 
-		const pos = fromLonLat([16.3725, 48.208889]);
+		// dübi position
+		const pos = fromLonLat([8.611, 47.391]);
 
-		// Vienna marker
+		// Dübi marker
 		this.marker = new Overlay({
 			position: pos,
 			positioning: "center-center",
@@ -47,11 +48,11 @@ export class AppComponent implements OnInit {
 		this.map.addOverlay(this.marker);
 
 		// Vienna label
-		this.vienna = new Overlay({
+		this.duebi = new Overlay({
 			position: pos,
-			element: document.getElementById("vienna")
+			element: document.getElementById("dübi")
 		});
-		this.map.addOverlay(this.vienna);
+		this.map.addOverlay(this.duebi);
 
 		// Popup showing the position the user clicked
 		const popup = new Overlay({
