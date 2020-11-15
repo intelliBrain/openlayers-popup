@@ -63,7 +63,8 @@ export class AppComponent implements OnInit {
 		this.map.on("click", function (evt) {
 			const element = popup.getElement();
 			const coordinate = evt.coordinate;
-			const hdms = toStringHDMS(toLonLat(coordinate));
+			const lonLat = toLonLat(coordinate);
+			const hdms = `lat=${lonLat[1]} ,lon=${lonLat[0]}`; // toStringHDMS(toLonLat(coordinate));
 
 			$(element).popover("dispose");
 			popup.setPosition(coordinate);
